@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   description: 'Um espaço seguro para desabafos anônimos e respostas acolhedoras. Você não está sozinho(a).',
   keywords: 'desabafo, anônimo, apoio, saúde mental, comunidade',
   authors: [{ name: 'Desabafo.app' }],
-  viewport: 'width=device-width, initial-scale=1',
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,
