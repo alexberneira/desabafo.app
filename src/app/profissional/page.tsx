@@ -21,7 +21,7 @@ export default function ProfissionalPage() {
     try {
       await DatabaseService.cadastrarProfissional({ nome, email, whats });
       setEnviado(true);
-    } catch (e) {
+    } catch (_e) {
       setErro('Erro ao cadastrar. Tente novamente.');
     } finally {
       setLoading(false);
