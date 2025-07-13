@@ -44,6 +44,12 @@ export default function RootLayout({
                 
                 {/* Navigation */}
                 <nav className="flex items-center space-x-3">
+                  <a 
+                    href="/profissional" 
+                    className="text-gray-900 hover:text-blue-700 text-sm bg-white/80 rounded px-3 py-1 transition-colors"
+                  >
+                    sou profissional
+                  </a>
                   
                   {/* Floating elements for visual appeal */}
                   <div className="hidden md:flex space-x-2">

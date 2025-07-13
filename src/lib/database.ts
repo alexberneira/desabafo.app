@@ -130,4 +130,13 @@ export class DatabaseService {
 
     return count || 0
   }
+
+  static async cadastrarProfissional({ nome, email, whats }: { nome: string, email: string, whats: string }) {
+    const { error } = await supabase
+      .from('profissionais')
+      .insert({ nome, email, whatsapp: whats, status: 'pendente' })
+    if (error) {
+      throw new Error(`Erro ao cadastrar profissional: ${error.message}`)
+    }
+  }
 } 
