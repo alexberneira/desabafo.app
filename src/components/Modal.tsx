@@ -42,7 +42,17 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
       {/* Modal */}
       <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden border border-gray-100">
         {/* Header */}
-        <div className="flex items-center justify-center p-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="flex items-center justify-center p-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50 flex-col relative">
+          {/* Botão X só no mobile */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-200 transition md:hidden"
+            aria-label="Fechar"
+          >
+            <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,6 +68,9 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
                 </>
               )}
             </div>
+          </div>
+          <div className="w-full flex justify-center mt-2">
+            <span className="text-xs text-blue-700 font-semibold bg-white/70 rounded-full px-3 py-1 shadow-sm select-all">www.desabafo.app</span>
           </div>
         </div>
         

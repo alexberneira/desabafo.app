@@ -170,6 +170,16 @@ export default function DesabafoModal({ isOpen, onClose, desabafoId }: DesabafoM
           </div>
         )}
       </div>
+      {/* CTA visual para post */}
+      <div className="p-3 bg-gradient-to-r from-purple-600 to-blue-500 rounded-b-3xl flex flex-col items-center mt-0">
+        <span className="text-white text-base font-bold mb-1 flex items-center gap-2">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          Faça parte da corrente do bem!
+        </span>
+        <span className="text-white/90 text-sm text-center max-w-xs">Compartilhe seu desabafo ou ajude alguém com uma resposta anônima.</span>
+      </div>
     </Modal>
   );
 } 
