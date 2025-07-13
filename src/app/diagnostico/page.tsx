@@ -33,7 +33,7 @@ export default function DiagnosticoPage() {
       // Teste 2: Verificar conectividade básica
       addResult('🌐 Testando conectividade...');
       
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('desabafos')
         .select('count')
         .limit(1);
@@ -55,7 +55,7 @@ export default function DiagnosticoPage() {
       // Teste 3: Verificar se as tabelas existem
       addResult('📋 Verificando tabelas...');
       
-      const { data: desabafos, error: desabafosError } = await supabase
+      const { error: desabafosError } = await supabase
         .from('desabafos')
         .select('*')
         .limit(1);
@@ -66,7 +66,7 @@ export default function DiagnosticoPage() {
         addResult('✅ Tabela "desabafos" encontrada');
       }
       
-      const { data: respostas, error: respostasError } = await supabase
+      const { error: respostasError } = await supabase
         .from('respostas')
         .select('*')
         .limit(1);
@@ -149,7 +149,7 @@ export default function DiagnosticoPage() {
             
             <div className="bg-gray-900 rounded-lg p-4 h-96 overflow-y-auto font-mono text-sm">
               {results.length === 0 ? (
-                <p className="text-gray-400">Clique em "Executar Diagnóstico" para começar...</p>
+                <p className="text-gray-400">Clique em &quot;Executar Diagnóstico&quot; para começar...</p>
               ) : (
                 results.map((result, index) => (
                   <div key={index} className="text-gray-300 mb-1">

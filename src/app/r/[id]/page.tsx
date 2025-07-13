@@ -136,7 +136,7 @@ export default function RespostasPage() {
             </Card>
           ) : (
             <div className="space-y-6">
-              {respostas.map((resposta: Resposta, index: number) => (
+              {respostas.map((resposta: Resposta) => (
                 <Card key={resposta.id} className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200/30 slide-up">
                   <div className="flex items-start space-x-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0">

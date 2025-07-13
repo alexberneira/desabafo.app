@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,9 +33,9 @@ export default function RootLayout({
                     </svg>
                   </div>
                   <div>
-                    <a href="/" className="text-xl font-bold gradient-text hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">
+                    <Link href="/" className="text-xl font-bold gradient-text hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">
                       desabafo.app
-                    </a>
+                    </Link>
                     <p className="text-white/80 text-xs hidden sm:block">
                       Você não está sozinho(a). Aqui você pode desabafar com segurança.
                     </p>

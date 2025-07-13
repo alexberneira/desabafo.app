@@ -16,18 +16,18 @@ export default function ConfigurarPage() {
                 <ol className="text-gray-300 space-y-2 ml-4">
                   <li>• Acesse <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">supabase.com</a></li>
                   <li>• Faça login ou crie uma conta</li>
-                  <li>• Clique em "New Project"</li>
-                  <li>• Escolha um nome para o projeto (ex: "desabafo-app")</li>
+                  <li>• Clique em &quot;New Project&quot;</li>
+                  <li>• Escolha um nome para o projeto (ex: &quot;desabafo-app&quot;)</li>
                   <li>• Crie uma senha forte para o banco</li>
                   <li>• Escolha uma região próxima</li>
-                  <li>• Clique em "Create new project"</li>
+                  <li>• Clique em &quot;Create new project&quot;</li>
                 </ol>
               </div>
 
               <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                 <h3 className="text-lg font-semibold text-white mb-2">2. Executar SQL Schema</h3>
                 <ol className="text-gray-300 space-y-2 ml-4">
-                  <li>• No dashboard do Supabase, vá para "SQL Editor"</li>
+                  <li>• No dashboard do Supabase, vá para &quot;SQL Editor&quot;</li>
                   <li>• Copie o conteúdo do arquivo <code className="bg-gray-800 px-2 py-1 rounded">database-schema.sql</code></li>
                   <li>• Cole no editor SQL e execute</li>
                   <li>• Isso criará as tabelas e políticas necessárias</li>
@@ -37,9 +37,9 @@ export default function ConfigurarPage() {
               <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                 <h3 className="text-lg font-semibold text-white mb-2">3. Obter Credenciais</h3>
                 <ol className="text-gray-300 space-y-2 ml-4">
-                  <li>• No dashboard, vá para "Settings" → "API"</li>
-                  <li>• Copie a "Project URL"</li>
-                  <li>• Copie a "anon public" key</li>
+                  <li>• No dashboard, vá para &quot;Settings&quot; → &quot;API&quot;</li>
+                  <li>• Copie a &quot;Project URL&quot;</li>
+                  <li>• Copie a &quot;anon public&quot; key</li>
                 </ol>
               </div>
 

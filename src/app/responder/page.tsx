@@ -154,7 +154,7 @@ export default function ResponderPage() {
                 if (filtro === 'respondidos') return (contagemRespostas[desabafo.id] || 0) > 0;
                 return true;
               })
-              .map((desabafo: Desabafo, index: number) => (
+              .map((desabafo: Desabafo) => (
                 <Card key={desabafo.id} variant="accent" className={`slide-up`}>
                   {/* Desabafo */}
                   <div className="mb-8">
