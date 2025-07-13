@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import Card from '@/components/Card';
+import DesabafoModal from '@/components/DesabafoModal';
 import { DatabaseService } from '@/lib/database';
 import { formatarData } from '@/utils';
 import { Desabafo } from '@/types/database';
@@ -17,6 +18,8 @@ export default function ResponderPage() {
   const [carregando, setCarregando] = useState(true);
   const [contagemRespostas, setContagemRespostas] = useState<Record<string, number>>({});
   const [filtro, setFiltro] = useState<'todos' | 'semResposta' | 'respondidos'>('todos');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedDesabafoId, setSelectedDesabafoId] = useState<string>('');
   const router = useRouter();
 
   useEffect(() => {
@@ -74,6 +77,16 @@ export default function ResponderPage() {
   const handleNovaResposta = (desabafoId: string) => {
     setEnviados(prev => ({ ...prev, [desabafoId]: false }));
     setRespostas(prev => ({ ...prev, [desabafoId]: '' }));
+  };
+
+  const handleOpenModal = (desabafoId: string) => {
+    setSelectedDesabafoId(desabafoId);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedDesabafoId('');
   };
 
   return (
@@ -172,17 +185,30 @@ export default function ResponderPage() {
                           <p className="text-sm text-gray-500">
                             {formatarData(desabafo.dataCriacao)}
                           </p>
-                          {contagemRespostas[desabafo.id] > 0 && (
+                          <div className="flex items-center space-x-3">
+                            {/* Link discreto para o modal */}
                             <button
-                              onClick={() => router.push(`/r/${desabafo.codigo}`)}
-                              className="text-xs text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 opacity-70 hover:opacity-100"
+                              onClick={() => handleOpenModal(desabafo.id)}
+                              className="text-xs text-gray-400 hover:text-gray-600 transition-colors duration-200 opacity-60 hover:opacity-100"
+                              title="Ver detalhes"
                             >
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                               </svg>
-                              <span>{contagemRespostas[desabafo.id]} resposta{contagemRespostas[desabafo.id] !== 1 ? 's' : ''}</span>
                             </button>
-                          )}
+                            {contagemRespostas[desabafo.id] > 0 && (
+                              <button
+                                onClick={() => router.push(`/r/${desabafo.codigo}`)}
+                                className="text-xs text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 opacity-70 hover:opacity-100"
+                              >
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                                <span>{contagemRespostas[desabafo.id]} resposta{contagemRespostas[desabafo.id] !== 1 ? 's' : ''}</span>
+                              </button>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -244,6 +270,13 @@ export default function ResponderPage() {
           </div>
         </>
       )}
+
+      {/* Modal de detalhes do desabafo */}
+      <DesabafoModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        desabafoId={selectedDesabafoId}
+      />
     </div>
   );
 } 
