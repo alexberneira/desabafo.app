@@ -50,12 +50,13 @@ export default function RootLayout({
                 <nav className="flex items-center space-x-3">
                   <a 
                     href="/profissional" 
-                    className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-semibold rounded-lg px-4 py-2 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm font-semibold rounded-lg px-2 sm:px-4 py-1.5 sm:py-2 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
-                    <span>Sou Profissional</span>
+                    <span className="hidden sm:inline">Sou Profissional</span>
+                    <span className="sm:hidden">Profissional</span>
                   </a>
                   
                   {/* Floating elements for visual appeal */}
