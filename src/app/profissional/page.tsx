@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { DatabaseService } from '@/lib/database';
 
 export default function ProfissionalPage() {
@@ -34,7 +35,7 @@ export default function ProfissionalPage() {
         <div className="bg-white/10 rounded-xl p-8 text-center border border-white/20">
           <h2 className="text-2xl font-bold text-white mb-4">Cadastro enviado!</h2>
           <p className="text-white/90 text-lg mb-6">Recebemos seus dados. Em breve entraremos em contato para validar seu cadastro como profissional de saúde.</p>
-          <a 
+          <Link 
             href="/" 
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg px-6 py-3 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
@@ -42,7 +43,7 @@ export default function ProfissionalPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
             <span>Voltar ao Início</span>
-          </a>
+          </Link>
         </div>
       </div>
     );
