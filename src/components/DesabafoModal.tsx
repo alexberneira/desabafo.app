@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Modal from './Modal';
 import { DatabaseService } from '@/lib/database';
 import { supabase } from '@/lib/supabase';
@@ -18,13 +18,7 @@ export default function DesabafoModal({ isOpen, onClose, desabafoId }: DesabafoM
   const [respostas, setRespostas] = useState<Resposta[]>([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (isOpen && desabafoId) {
-      carregarDados();
-    }
-  }, [isOpen, desabafoId]);
-
-  const carregarDados = async () => {
+  const carregarDados = useCallback(async () => {
     setLoading(true);
     try {
       // Buscar desabafo por ID (usando o ID diretamente)
@@ -59,7 +53,13 @@ export default function DesabafoModal({ isOpen, onClose, desabafoId }: DesabafoM
     } finally {
       setLoading(false);
     }
-  };
+  }, [desabafoId]);
+
+  useEffect(() => {
+    if (isOpen && desabafoId) {
+      carregarDados();
+    }
+  }, [isOpen, desabafoId, carregarDados]);
 
   if (!isOpen) return null;
 
