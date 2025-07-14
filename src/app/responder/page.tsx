@@ -7,6 +7,7 @@ import Textarea from '@/components/Textarea';
 import Card from '@/components/Card';
 import DesabafoModal from '@/components/DesabafoModal';
 import { DatabaseService } from '@/lib/database';
+import { supabase } from '@/lib/supabase';
 import { formatarData } from '@/utils';
 import { Desabafo } from '@/types/database';
 
@@ -27,17 +28,17 @@ export default function ResponderPage() {
       try {
         const desabafosData = await DatabaseService.buscarDesabafosParaResponder();
         setDesabafos(desabafosData);
-        
-        // Carregar contagem de respostas para cada desabafo
+
+        // Buscar todas as respostas de uma vez
+        const { data: respostasData, error: respostasError } = await supabase
+          .from('respostas')
+          .select('id, desabafo_id');
+        if (respostasError) throw respostasError;
+
+        // Calcular contagem de respostas por desabafo
         const contagens: Record<string, number> = {};
-        for (const desabafo of desabafosData) {
-          try {
-            const count = await DatabaseService.contarRespostasPorDesabafo(desabafo.id);
-            contagens[desabafo.id] = count;
-          } catch (error) {
-            console.error(`Erro ao contar respostas para desabafo ${desabafo.id}:`, error);
-            contagens[desabafo.id] = 0;
-          }
+        for (const resposta of respostasData || []) {
+          contagens[resposta.desabafo_id] = (contagens[resposta.desabafo_id] || 0) + 1;
         }
         setContagemRespostas(contagens);
       } catch (error) {

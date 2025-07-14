@@ -78,23 +78,23 @@ export default function DesabafoModal({ isOpen, onClose, desabafoId }: DesabafoM
         ) : desabafo ? (
           <div className="space-y-0">
             {/* Desabafo */}
-            <div className="p-6 border-b border-gray-50 bg-gradient-to-br from-white to-gray-50/30">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+            <div className="p-3 border-b border-gray-50 bg-gradient-to-br from-white to-gray-50/30">
+              <div className="flex items-start space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="font-bold text-gray-900 text-lg">Anônimo</span>
+                  <div className="flex items-center space-x-2 mb-1">
+                    <span className="font-bold text-gray-900 text-base">Anônimo</span>
                     <span className="text-gray-300">•</span>
-                    <span className="text-sm text-gray-500 font-medium">{formatarData(desabafo.dataCriacao)}</span>
+                    <span className="text-xs text-gray-500 font-medium">{formatarData(desabafo.dataCriacao)}</span>
                   </div>
-                  <p className="text-gray-800 leading-relaxed mb-4 text-lg">
+                  <p className="text-gray-800 leading-relaxed mb-2 text-base">
                     &ldquo;{desabafo.texto}&rdquo;
                   </p>
-                  <div className="flex items-center space-x-4 text-sm">
+                  <div className="flex items-center space-x-3 text-xs">
                     <span className="flex items-center space-x-1 text-blue-600 font-medium">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -113,27 +113,26 @@ export default function DesabafoModal({ isOpen, onClose, desabafoId }: DesabafoM
                 </div>
               </div>
             </div>
-
-                        {/* Respostas */}
+            {/* Respostas */}
             {respostas.length > 0 ? (
               <div className="divide-y divide-gray-50">
                 {respostas.map((resposta) => (
-                  <div key={resposta.id} className="p-6 bg-white">
-                    <div className="flex items-start space-x-4">
+                  <div key={resposta.id} className="p-3 bg-white">
+                    <div className="flex items-start space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center space-x-2 mb-3">
-                          <span className="font-semibold text-gray-900">
+                        <div className="flex items-center space-x-2 mb-1">
+                          <span className="font-semibold text-gray-900 text-sm">
                             Membro da Comunidade
                           </span>
                           <span className="text-gray-300">•</span>
-                          <span className="text-sm text-gray-500 font-medium">{formatarData(resposta.dataCriacao)}</span>
+                          <span className="text-xs text-gray-500 font-medium">{formatarData(resposta.dataCriacao)}</span>
                         </div>
-                        <p className="text-gray-800 leading-relaxed text-base">
+                        <p className="text-gray-800 leading-relaxed text-sm mb-1">
                           &ldquo;{resposta.texto}&rdquo;
                         </p>
                       </div>
